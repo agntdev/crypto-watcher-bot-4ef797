@@ -1,6 +1,12 @@
 import { Composer } from "grammy";
 import type { Ctx } from "../bot.js";
-import { mainMenuKeyboard } from "../toolkit/index.js";
+import { mainMenuKeyboard, registerMainMenuItem } from "../toolkit/index.js";
+
+// Register main menu items for all features
+registerMainMenuItem({ label: "📈 Price", data: "price:check", order: 10 });
+registerMainMenuItem({ label: "➕ Add Coin", data: "add_coin:start", order: 20 });
+registerMainMenuItem({ label: "📋 Watchlist", data: "watchlist:view", order: 30 });
+registerMainMenuItem({ label: "⚙️ Settings", data: "settings:show", order: 40 });
 
 // The /start handler renders the bot's MAIN MENU — the primary way users operate
 // a button-first bot. A feature adds its own button by calling
@@ -9,7 +15,7 @@ import { mainMenuKeyboard } from "../toolkit/index.js";
 // file to add a feature. Send ONE message — no placeholder line above the menu.
 const composer = new Composer<Ctx>();
 
-const WELCOME = "👋 Welcome! Tap a button below to get started.";
+const WELCOME = "👋 Welcome to Crypto Watcher! Track prices, set alerts, and get morning summaries.\n\nTap a button below to get started.";
 
 composer.command("start", async (ctx) => {
   await ctx.reply(WELCOME, { reply_markup: mainMenuKeyboard() });

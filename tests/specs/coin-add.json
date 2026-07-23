@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Add coin button shows common tickers",
+    "steps": [
+      {
+        "send": { "callback": "add_coin:start" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Which coin do you want to add to your watchlist?\n\nTap one of the common coins below, or search for any other."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Search button prompts for ticker input",
+    "steps": [
+      {
+        "send": { "callback": "add_coin:search" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Type the ticker or name of the coin you want to add (e.g., BTC, ETH, or Bitcoin)."
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

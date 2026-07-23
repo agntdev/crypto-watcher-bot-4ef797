@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Settings button shows current settings",
+    "steps": [
+      {
+        "send": { "callback": "settings:show" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "⚙️ Your settings:\n\n🌍 Timezone: UTC\n🔇 Quiet hours: 22:00 – 7:00\n🌅 Morning summary: 08:00\n⏱ Cooldown: 60 minutes"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Timezone button shows timezone options",
+    "steps": [
+      {
+        "send": { "callback": "settings:tz" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Select your timezone:"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Quiet hours button shows options",
+    "steps": [
+      {
+        "send": { "callback": "settings:quiet" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "When should alerts be quiet?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cooldown button shows options",
+    "steps": [
+      {
+        "send": { "callback": "settings:cooldown" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "How long between alerts for the same coin?"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
