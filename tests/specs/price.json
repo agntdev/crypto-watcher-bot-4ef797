@@ -1,19 +1,33 @@
 [
   {
-    "name": "/price",
+    "name": "/price with empty watchlist",
     "steps": [
       {
+        "send": { "text": "/price" },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Check price of watchlist or specific ticker"
+              "text": "Your watchlist is empty.\n\nAdd some coins first, then check their prices."
             }
           }
-        ],
-        "send": {
-          "text": "/price"
-        }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "price:check callback with empty watchlist",
+    "steps": [
+      {
+        "send": { "callback": "price:check" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Your watchlist is empty.\n\nAdd some coins first, then check their prices."
+            }
+          }
+        ]
       }
     ]
   }

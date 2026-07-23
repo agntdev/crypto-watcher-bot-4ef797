@@ -9,8 +9,13 @@ import { inlineButton, inlineKeyboard } from "../toolkit/index.js";
 const composer = new Composer<Ctx>();
 
 const HELP =
-  "ℹ️ Tap /start to open the menu, then pick what you want from the buttons.\n\n" +
-  "Everything in this bot is reachable by tapping — you don't need to remember any commands.";
+  "ℹ️ Crypto Watcher tracks your favorite coins and alerts you when prices move.\n\n" +
+  "Tap /start to open the menu, then:\n" +
+  "• Add coins to your watchlist\n" +
+  "• Check live prices\n" +
+  "• Set price alerts\n" +
+  "• Configure settings\n\n" +
+  "Everything works by tapping — no commands to remember.";
 
 const backToMenu = inlineKeyboard([[inlineButton("⬅️ Back to menu", "menu:main")]]);
 

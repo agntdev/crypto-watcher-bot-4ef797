@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Alert start button shows alert type options",
+    "steps": [
+      {
+        "send": { "callback": "alert:start:BTC" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Set an alert for BTC.\n\nWhat kind of alert do you want?"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Price above button prompts for threshold",
+    "steps": [
+      {
+        "send": { "callback": "alert:dir:above:BTC" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Enter the price threshold for BTC (in USD).\n\nAlert when price goes above this value."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Price below button prompts for threshold",
+    "steps": [
+      {
+        "send": { "callback": "alert:dir:below:BTC" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Enter the price threshold for BTC (in USD).\n\nAlert when price goes below this value."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Percent change button shows direction options",
+    "steps": [
+      {
+        "send": { "callback": "alert:type:percent:BTC" },
+        "expect": [
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "For BTC percent change alert, which direction?"
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

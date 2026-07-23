@@ -1,19 +1,17 @@
 [
   {
-    "name": "Add Coin",
+    "name": "Add Coin button shows ticker selection",
     "steps": [
       {
+        "send": { "callback": "add_coin:start" },
         "expect": [
           {
-            "method": "sendMessage",
+            "method": "editMessageText",
             "payload": {
-              "text": "Initiate coin addition flow with common ticker suggestions"
+              "text": "Which coin do you want to add to your watchlist?\n\nTap one of the common coins below, or search for any other."
             }
           }
-        ],
-        "send": {
-          "callback": "add_coin:start"
-        }
+        ]
       }
     ]
   }
