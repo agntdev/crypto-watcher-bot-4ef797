@@ -73,9 +73,12 @@ composer.callbackQuery(/^alert:pdir:(above|below):(.+)$/, async (ctx) => {
 });
 
 // Handle numeric input for price/percent thresholds
-composer.on("message:text", async (ctx) => {
+composer.on("message:text", async (ctx, next) => {
   const flow = ctx.session.flow;
-  if (!flow || !flow.startsWith("alert:awaiting_")) return;
+  if (!flow || !flow.startsWith("alert:awaiting_")) {
+    await next();
+    return;
+  }
 
   const text = ctx.message.text.trim();
   const value = parseFloat(text);

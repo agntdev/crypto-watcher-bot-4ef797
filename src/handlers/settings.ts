@@ -166,8 +166,11 @@ composer.callbackQuery(/^settings:cooldown:(\d+)$/, async (ctx) => {
 });
 
 // Handle text input for summary time
-composer.on("message:text", async (ctx) => {
-  if (ctx.session.flow !== "settings:awaiting_summary_time") return;
+composer.on("message:text", async (ctx, next) => {
+  if (ctx.session.flow !== "settings:awaiting_summary_time") {
+    await next();
+    return;
+  }
 
   const text = ctx.message.text.trim();
   const timeRegex = /^([01]?\d|2[0-3]):([0-5]\d)$/;

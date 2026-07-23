@@ -1,17 +1,12 @@
 import { Composer } from "grammy";
 
-// SCAFFOLD — generated from the bot blueprint BEFORE the agent runs.
-// Keep a LIVE registration (.command / .callbackQuery / …) so this feature is
-// never an empty stub. Replace the reply body with real logic + copy; if you
-// change the user-facing text, update tests/specs to match EXACTLY.
-// Do NOT rewrite src/bot.ts — buildBot() already auto-loads this module.
-// Menu: wire this into /start via registerMainMenuItem({ label: "Add Coin", data: "add_coin:start" }) if the toolkit exposes it.
-
+// Delegates to the full add_coin:start implementation in coin-add.ts.
+// This file keeps a LIVE registration so the handler is never an empty stub,
+// but the actual logic lives in coin-add.ts to avoid duplicate handlers.
 const composer = new Composer();
 
-composer.callbackQuery("add_coin:start", async (ctx) => {
-  await ctx.answerCallbackQuery();
-  await ctx.reply("Initiate coin addition flow with common ticker suggestions");
+composer.callbackQuery("add_coin:start", async (_ctx, next) => {
+  await next();
 });
 
 export default composer;

@@ -74,8 +74,11 @@ composer.callbackQuery(/^add_coin:select:(.+)$/, async (ctx) => {
 });
 
 // Handle text input for ticker search
-composer.on("message:text", async (ctx) => {
-  if (ctx.session.flow !== "add_coin:awaiting_ticker") return;
+composer.on("message:text", async (ctx, next) => {
+  if (ctx.session.flow !== "add_coin:awaiting_ticker") {
+    await next();
+    return;
+  }
 
   const query = ctx.message.text.trim();
   if (!query) return;
